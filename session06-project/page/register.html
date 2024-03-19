@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        input{
+            height: 60px;
+            border-radius: 5px;
+            border: 2px solid gray;
+            padding: 10px;
+        }
+        .sign-up {
+            width: 420px;
+            margin: auto;
+            margin-top: 10%;
+        
+        }
+        .header {
+            text-align: center;
+        }
+        .content {
+            text-align: center;
+        }
+        .inp-name input{
+            width: 195px;
+            padding: 10px;
+            margin: 0 5px 20px 2px;
+        }
+        
+        .inp-email input{
+            width: 400px;
+            margin-bottom: 20px;
+        }
+        .inp-password input{
+            width: 400px;
+            margin-bottom: 20px;
+        }
+        .footer {
+            text-align: center;
+        }
+        .checkbox{
+            text-align: left;
+            margin:0 0 10px 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .checkbox div{
+            max-width: 250px;
+            line-height: 25px;
+        }
+        .btn-signUp {
+            width: 400px;
+            height: 60px;
+            background-color: blue;
+            color: white;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        .link {
+            text-align: right;
+            margin: 10px;
+        }
+        .end {
+            text-align: center ;
+            text-decoration: underline;
+        }
+        .error{
+            border: 1px solid red;
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <form class="sign-up">
+        <div class="header">
+            <div class="lock"><i class="fa-solid fa-lock"></i></div>
+            <h1>Sign up</h1>
+        </div>
+        <div class="content">
+            <div class="inp-name">
+                <input type="text" name="firstName" id="inpFirstName" placeholder="first Name*">
+                <input type="text" name="lastName" id="inpLastName" placeholder="last Name*">
+            </div>
+            <div class="inp-email">
+                <input type="email" name="email" id="inpEmail" placeholder="Email Address*">
+            </div>
+            <div class="inp-password">
+                <input type="password" name="password" id="inpPassword" placeholder="Password*">
+            </div>
+            <div class="checkbox">
+                <input style="height: 13px;" type="checkbox" name="giDo:>" id="check-box">
+                <div>I want to revice  inspiration, marketing<br>promotions and update via email.</div>
+            </div>
+        </div>
+        <div class="footer">
+            <button onclick="signUp(event)" class="btn-signUp">SIGN UP</button>
+            <div class="link">
+                <a href="login.html">Already have an account? Sign in</a>
+            </div>
+        </div>
+        <a href="../asset/videos/"></a>
+        <div class="end">Copyright © <span>Your Website</span> 2024</div>
+    </form>
+    <script>
+        let accountList = JSON.parse(localStorage.getItem("accountList"))||[];
+        // localStorage.setItem("accountList", JSON.stringify(accountList));
+        function signUp(e) {
+            e.preventDefault();
+            let firstName = document.getElementById("inpFirstName").value;
+            let lastName = document.getElementById("inpLastName").value;
+            let email = document.getElementById("inpEmail").value;
+            let password = document.getElementById("inpPassword").value;
+            let check = document.getElementById("check-box").checked;
+            let obj = {
+                    id: Math.floor(Math.random()*10000000),
+                    firstName: `${firstName}`,
+                    lastName: `${lastName}`,
+                    emailAddress: `${email}`,
+                    password: `${password}`,
+                    receive: `${check}`,
+                    cart:[]
+                    }
+            if (email == "" || password == "" || firstName == "" || lastName == "") {
+                alert("khong duoc de trong thong tin");
+                return;
+            }
+            let flag = true;
+            for (let i = 0; i < accountList.length; i++) {
+                if (email == accountList[i].emailAddress) {
+                    alert("email đã được sử dụng");
+                    flag = false;
+                    break;
+                }               
+            }
+            
+            if(flag){
+                accountList.push(obj);
+                alert("Đăng kí thành công!");
+                localStorage.setItem("accountList",JSON.stringify(accountList));
+                window.location.href = "../page/login.html";
+
+            }
+        }
+
+    </script>
+</body>
+</html>
