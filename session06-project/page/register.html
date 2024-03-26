@@ -131,6 +131,7 @@
                     receive: `${check}`,
                     cart:[]
                     }
+
             if (email == "" || password == "" || firstName == "" || lastName == "") {
                 alert("khong duoc de trong thong tin");
                 return;
@@ -149,7 +150,6 @@
                 alert("Đăng kí thành công!");
                 localStorage.setItem("accountList",JSON.stringify(accountList));
                 window.location.href = "../page/login.html";
-
             }
         }
 

@@ -4,6 +4,47 @@
     box-sizing: border-box;
     font-family:Arial, Helvetica, sans-serif
 }
+#notification {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 30px;
+    font-size: 17px;
+  }
+  
+  #notification.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  @-webkit-keyframes fadein {
+    from {top: 0; opacity: 0;} 
+    to {top: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {top: 30px; opacity: 1;} 
+    to {top: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {top: 30px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+  }
 li{
     list-style: none;
 }
@@ -13,6 +54,9 @@ a{
 }
 hr{
     margin: 5% 0 5% 0;
+}
+button{
+    border: 1px solid transparent;
 }
 .logo img{
     height: 35px;
@@ -55,6 +99,9 @@ hr{
 .tools li:hover{
     background-color: rgb(164, 164, 164);
 }
+header .user .cart:hover{
+    cursor: pointer;
+}
 .listCart {
     position: absolute;
     right:  10px;
@@ -86,11 +133,12 @@ hr{
     top: 15px;
     background-color: red;
     height: 15px;
-    width: 15px;
-    font-size: 12px;
+    min-width: 15px;
+    max-width: 40px;
+    font-size: 10px;
     color: white;
     line-height: 15px;
-    font-weight: 600;
+    font-weight: 500;
     right: 15px;
     border: 1px solid white;
     text-align: center;
@@ -150,7 +198,7 @@ main .product .inforProduct  .nameProduct{
 
 main .product .inforProduct .addAndSubtract {
     display: flex;
-    gap: 30px;
+    gap: 10px;
 }
 main .product .inforProduct .policy img{
     width: 25px;
@@ -170,6 +218,47 @@ main .product .inforProduct .addAndSubtract button {
     width: 40px;
     line-height: 40px;
 }
-.quanlity {
+main .product .inforProduct .addAndSubtract input{
+    text-align: center;
+    border: 1px solid transparent;
 
 }
+main .product .inforProduct .addAndSubtract input[type=number]::-webkit-inner-spin-button,
+main .product .inforProduct .addAndSubtract input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            
+        }
+main .product .inforProduct .samplesList{
+    display: flex;
+    gap: 20px;
+}
+main .product .inforProduct .samples{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 400px;
+}
+main .product .inforProduct .samplesList .samples .productSamples {
+    border: 2px solid black;
+    font-size: 20px;
+    text-align: center;
+    height: 50px;
+    width: 120px;
+    line-height: 50px;
+}
+
+main .product .inforProduct .samplesList .samples .productSamples:hover,
+main .product .inforProduct .samplesList .samples .productSamples:focus{
+    border: 2px solid rgb(0, 255, 26);
+}
+main .product .inforProduct .addToCart button{
+    height: 70px;
+    width: 300px;
+    border-radius: 4px;
+    line-height: 70px;
+}
+main .product .inforProduct .addToCart button:hover{
+    border: 3px solid black;
+}
+

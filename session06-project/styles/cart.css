@@ -1,4 +1,3 @@
-
 *{
     margin: 0;
     padding: 0;
@@ -14,6 +13,9 @@ a{
 }
 hr{
     margin: 5% 0 5% 0;
+}
+button{
+    border: 1px solid transparent;
 }
 .logo img{
     height: 35px;
@@ -55,6 +57,9 @@ hr{
 }
 .tools li:hover{
     background-color: rgb(164, 164, 164);
+}
+header .user .cart:hover{
+    cursor: pointer;
 }
 .listCart {
     position: absolute;
@@ -111,7 +116,7 @@ hr{
     line-height: 48.6px;
 }
 .material-symbols-outlined:hover{
-    color: aliceblue;
+    color: rgb(195, 195, 195);
 }
 
 .suggestionBar {
@@ -124,52 +129,49 @@ hr{
 .page{
     background-color: rgb(245, 245, 245);
 }
-.suggestionBar div:hover{
-    color: rgb(255, 0, 0);
-    cursor: pointer;
+main{
+    margin-top: 50px;
 }
-
-.title{
-    margin:5% 0 5% 10%;
-    font-weight: 500;
-    font-size: 60px;
-}
-.products {
-    width: 80%;
-    display: flex;
-    gap: 60px;
-    justify-content:left;
-    flex-wrap: wrap;
-    position: relative;
-    left: 10%;
-}
-.product {
-    background-color: rgb(255, 255, 255);
-    height: 420px;
-    width: 270px;
-    text-align: center;
-}
-.product:hover{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-.product button{
-    padding: 8px 100px;
+main table{
+    width: 90%;
+    margin-left: 5%;
     border: 1px solid transparent;
-    cursor: pointer;
 }
-.productImg img{
-    margin-top: 10%;
-    width: 210px;
-    height: 280px;
+main table thead tr th{
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    border: 1px;
 }
-.productName {
-    text-align: left;
-    margin:5px 0 5px 20px;
+main table tbody tr td{
+    text-align: center;
+    background-color: rgb(224, 224, 224);
+    color: rgb(65, 65, 65);
+    border: 1px solid transparent;
 }
-.price {
-    text-align: left;
-    margin-left: 20px;
+main table tbody tr .stock{
+    justify-content: center;
+    display: flex;
 }
-.cart:hover{
-    cursor: pointer;
+main table tbody tr button{
+    
+}
+main table tbody tr td{
+    height: 100px;
+    align-items: center;
+}
+main table tbody tr td img{
+    height: 100px;
+}
+main table tbody tr td span{
+    background-color: transparent;
+}
+main table tbody tr .stock{
+    height: 106.4px;
+    display: flex ;
+    gap: 10px;
+}
+main table tbody tr .stock button{
+    background-color: transparent;
+
 }
