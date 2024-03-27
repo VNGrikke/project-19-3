@@ -183,7 +183,7 @@ main .product .imgProduct{
     width: 450px;
 }
 main .product .imgProduct img{
-    width: 450px;
+    height: 450px;
 }
 main .product .inforProduct{
     margin: 3% 5%;

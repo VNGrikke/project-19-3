@@ -92,41 +92,53 @@
     </div>
     <div class="end">Copyright © <span>Your Website</span> 2024</div>
 </form>
+
 <script>
+    let admin = JSON.parse(localStorage.getItem("admin"));
+    // {
+    //     email:"admin@gmail.com",
+    //     password:"123456789",
+    //     login: false
+    // }
+    // localStorage.setItem("admin",JSON.stringify(admin));
     let accountList = JSON.parse(localStorage.getItem("accountList"))||[];
     function signIn(e) {
         e.preventDefault();
         let inpEmail = document.getElementById("email").value;
         let inpPassword = document.getElementById("password").value;
-        console.log(inpPassword);
         let check = false;
         let account = {};
-       
-        if(inpEmail== ""){
+        console.log(admin);
+        if(inpEmail == ""){
             alert("chưa điền email");
         }else if (inpPassword == ""){
             alert("chưa điền mật khẩu");
         }else {
-            for (let i = 0; i < accountList.length; i++) {
-                if (inpEmail == accountList[i].emailAddress) {
-                    account = accountList[i];
-                    check = true;
-                    break;
+            if (inpEmail == admin.email && inpPassword == admin.password) {
+                admin.login = true;
+                localStorage.setItem("admin",JSON.stringify(admin));
+                window.location.href = "../index.html";
+            }else{
+                for (let i = 0; i < accountList.length; i++) {
+                    if (inpEmail == accountList[i].emailAddress) {
+                        account = accountList[i];
+                        check = true;
+                        break;
+                    }
                 }
-            }
-            if (check) {
-                if (inpPassword == account.password){
-                  
-                    window.location.href = "../index.html";
-                    localStorage.setItem("user",JSON.stringify(account));
+                if (check) {
+                    if (inpPassword == account.password){
+                    
+                        window.location.href = "../index.html";
+                        localStorage.setItem("user",JSON.stringify(account));
+                    }else{
+                        alert("sai thong tin");
+                    }
                 }else{
                     alert("sai thong tin");
                 }
-            }else{
-                alert("sai thong tin");
             }
         }
-        
     }
 </script>
 

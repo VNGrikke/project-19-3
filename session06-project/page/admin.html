@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/admin.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="letf">
+        <div class="logo">
+            <img onclick="home()" src="../asset/logo-removebg-preview.png" alt="">
+            <div>ADMIN</div>
+        </div>
+
+        <div class="manager">
+            <div onclick="customer()" class="managerItem" id="customer">khách hàng</div>
+            <div onclick="productPortfolio()" class="managerItem" id="productPortfolio">danh mục sản phẩm</div>
+            <div onclick="productManagement()" class="managerItem" id="productManagement">quản lí sản phẩm</div>
+            <div onclick="bill()" class="managerItem" id="bill">hóa đơn</div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="customer">
+            <div class="findNameCustomer"><input type="text" name="" id="inputName"><button>tìm kiếm</button></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>stt</th>
+                        <th>Tên khách hàng</th>
+                        <th>email</th>
+                        <th>Số điện thoại</th>
+                        <th>khóa</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyCustomer">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script src="../js/admin.js"></script>
+</html>

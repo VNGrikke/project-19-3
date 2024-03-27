@@ -1,5 +1,6 @@
 let users = JSON.parse(localStorage.getItem("accountList"));
 let account = JSON.parse(localStorage.getItem("user")) || [];
+let admin = JSON.parse(localStorage.getItem("admin"));
 let check = false;
 let products = JSON.parse(localStorage.getItem("products"))||[];
 // [ 
@@ -8,31 +9,47 @@ let products = JSON.parse(localStorage.getItem("products"))||[];
 //   {id:3, name:"Mô hình Shinobu", stock: 72, price: 23000000, scr:"./asset/img/KimetsuNoYaiba/shinobu/Shinobu.jpg ",properties:"mô hình Kochō Shinobu kimetsu no yaiba"}
 // ]
 // localStorage.setItem("products",JSON.stringify(products));
-// let admin = 
+console.log(admin);
 function change() {
-    if (account !== null && typeof account === 'object' && Object.keys(account).length == 0) {
-        check = false;
-        document.getElementById("user").innerHTML = `<div id="user"> <a href="/session06-project/page/register.html">Đăng kí</a>/<a href="/session06-project/page/login.html">Đăng nhập</a></div>`
-                                                        
-    }else{
-        check = true;
+    if (admin.login) {
+        document.getElementById("cart").classList.add("hide");
         document.getElementById("user").innerHTML = `
-                                                        <div id="user" class="user-logo">${account.firstName} ${account.lastName}</div>
-                                                        <ul class="tools">
-                                                            <li><a href="">thông tin tài khoản</a></li>
-                                                            <li onclick="logOut()">đăng xuất</li>
-                                                        </ul>
-                                                    `
+                                                            <div id="user" class="user-logo">admin</div>
+                                                            <ul class="tools">
+                                                                <li onclick="manager()">quản lí</li>
+                                                                <li onclick="logOutAdmin()">đăng xuất</li>
+                                                            </ul>`
+    }else{
+        document.getElementById("cart").classList.remove("hide");
+        if (account !== null && typeof account === 'object' && Object.keys(account).length == 0) {
+            check = false;
+            document.getElementById("user").innerHTML = `<div id="user"> <a href="/session06-project/page/register.html">Đăng kí</a>/<a href="/session06-project/page/login.html">Đăng nhập</a></div>`
+                                                            
+        }else{
+            check = true;
+            document.getElementById("user").innerHTML = `
+                                                            <div id="user" class="user-logo">${account.firstName} ${account.lastName}</div>
+                                                            <ul class="tools">
+                                                                <li><a href="">thông tin tài khoản</a></li>
+                                                                <li onclick="logOutUser()">đăng xuất</li>
+                                                            </ul>
+                                                        `
+        }
+        renderCart() 
     }
-    renderCart() 
 }
 change();
-function logOut() {
+function logOutUser() {
     account = {}
     localStorage.setItem("user",JSON.stringify(account));
-    ;
     change();
 }
+function logOutAdmin() {
+    admin.login = false
+    localStorage.setItem("admin",JSON.stringify(admin));
+    change();
+}
+
 function render() {
     let productsRender = "";
     let priceProduct;
@@ -82,4 +99,7 @@ function productDetail(id) {
 }
 function cart() {
     window.location.href = "./page/cart.html";
+}
+function manager(){
+    window.location.href = "./page/admin.html";
 }

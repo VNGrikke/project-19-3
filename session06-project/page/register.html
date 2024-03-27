@@ -39,6 +39,11 @@
             width: 400px;
             margin-bottom: 20px;
         }
+        .inp-Phone-Number input{
+            width: 400px;
+            margin-bottom: 20px;
+        }
+
         .inp-password input{
             width: 400px;
             margin-bottom: 20px;
@@ -95,6 +100,9 @@
             <div class="inp-email">
                 <input type="email" name="email" id="inpEmail" placeholder="Email Address*">
             </div>
+            <div class="inp-Phone-Number">
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Nhập số điện thoại của bạn" required>
+            </div>
             <div class="inp-password">
                 <input type="password" name="password" id="inpPassword" placeholder="Password*">
             </div>
@@ -120,16 +128,19 @@
             let firstName = document.getElementById("inpFirstName").value;
             let lastName = document.getElementById("inpLastName").value;
             let email = document.getElementById("inpEmail").value;
+            let phone = document.getElementById("phone").value;
             let password = document.getElementById("inpPassword").value;
             let check = document.getElementById("check-box").checked;
             let obj = {
-                    id: Math.floor(Math.random()*10000000),
-                    firstName: `${firstName}`,
-                    lastName: `${lastName}`,
-                    emailAddress: `${email}`,
-                    password: `${password}`,
-                    receive: `${check}`,
-                    cart:[]
+                        id: Math.floor(Math.random()*10000000),
+                        firstName: `${firstName}`,
+                        lastName: `${lastName}`,
+                        emailAddress: `${email}`,
+                        password: `${password}`,
+                        receive: check,
+                        numberPhone:phone,
+                        cart:[],
+                        status: true
                     }
 
             if (email == "" || password == "" || firstName == "" || lastName == "") {
@@ -142,12 +153,27 @@
                     alert("email đã được sử dụng");
                     flag = false;
                     break;
+                }else if(phone == accountList[i].numberPhone){
+                    alert("sdt da dc su dung");
+                    flag = false;
+                    break;
                 }               
             }
             
             if(flag){
                 accountList.push(obj);
                 alert("Đăng kí thành công!");
+                accountList.sort(function(a,b) {
+                    let name1 = a.firstName.toUpperCase();
+                    let name2 = b.firstName.toUpperCase();
+                    if (name1 < name2) {
+                        return -1;
+                    }
+                    if (name1 > name2) {
+                        return 1; 
+                    }
+                    return 0; 
+                });
                 localStorage.setItem("accountList",JSON.stringify(accountList));
                 window.location.href = "../page/login.html";
             }

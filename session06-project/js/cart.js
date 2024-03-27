@@ -55,6 +55,7 @@ function render() {
         prices = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(account.cart[i].price*account.cart[i].quantity);
         itemCart += `
                     <tr>
+                        <td>${i+1}</td>
                         <td>${account.cart[i].name}</td>
                         <td><img src=".${account.cart[i].scr}" alt=""></td>
                         <td>${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(account.cart[i].price)}</td>
@@ -64,7 +65,7 @@ function render() {
                             <button onclick="increase(${account.cart[i].id})">+</button>
                         </td>
                         <td>${prices}</td>
-                        <td><span class="material-symbols-outlined">delete</span></td>
+                        <td><span onclick="del(${account.cart[i].id})" class="material-symbols-outlined">delete</span></td>
                     </tr>
                     `;
 
@@ -75,12 +76,10 @@ render();
 function reduce(id) {
     let x = parseInt(document.getElementById(`quanlity${id}`).innerText);
     x--;
-    console.log(id);
-
     if(x <= 1)x=1;
-   
+
     for (let i = 0; i < account.cart.length; i++) {
-        if (id = account.cart[i].id) {
+        if (id == account.cart[i].id) {
             account.cart[i].quantity = x;
             localStorage.setItem("user",JSON.stringify(account));
             localStorage.setItem("accountList",JSON.stringify(users));
@@ -92,9 +91,8 @@ function reduce(id) {
 function increase(id) {
     let x = parseInt(document.getElementById(`quanlity${id}`).innerText);
     x++;
-    console.log(id);
     for (let i = 0; i < account.cart.length; i++) {
-        if (id = account.cart[i].id) {
+        if (id == account.cart[i].id) {
             account.cart[i].quantity = x;
             localStorage.setItem("user",JSON.stringify(account));
             localStorage.setItem("accountList",JSON.stringify(users));
@@ -102,4 +100,7 @@ function increase(id) {
             break;
         }        
     }
+}
+function del(id) {
+    
 }

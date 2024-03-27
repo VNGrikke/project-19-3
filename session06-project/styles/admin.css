@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif
+}
+body{
+    display: flex;
+}
+.choose{
+    background-color: rgb(183, 183, 183);
+}
+.letf {
+    height: 100%;
+    width: 250px;
+    background-color: rgb(161, 161, 161);
+    height: 900px;
+}
+.letf .logo{
+    padding-top: 50px;
+    text-align: center;
+}
+.letf .logo img{
+    width: 100px;
+}
+.letf .logo img:hover{
+    cursor: pointer;
+}
+.letf .manager{
+    
+    margin-top: 50px;
+}
+.letf .manager .managerItem{
+    padding-left: 20px;
+    height: 50px;
+    color: white;
+    line-height: 50px;
+}
+.letf .manager .managerItem:hover{
+    background-color: rgb(183, 183, 183);
+}
+.right .findNameCustomer {
+    position: relative;
+    left: 720px;
+    top: -30px;
+}
+
+
+.right .customer{
+    margin: 120px
+}
+.right .customer table thead tr th{
+    height: 50px;
+    background-color: black;
+    color: white;
+}
+.right .customer table thead tr th:first-child{
+    width: 50px;
+}
+.right .customer table thead tr th:nth-child(2){
+    width: 300px;
+}
+.right .customer table thead tr th:nth-child(3){
+    width: 400px;
+}
+.right .customer table thead tr th:nth-child(4){
+    width: 160px;
+}
+.right .customer table thead tr th:nth-child(5){
+    width: 70px;
+}
+.right .customer table tbody tr td{
+    height: 50px;
+    background-color: rgb(186, 186, 186);
+}
+.right .customer table tbody tr td:first-child{
+    width: 50px;
+    text-align: center;
+}
+.right .customer table tbody tr td:nth-child(2){
+    width: 300px;
+    padding-left: 10px;
+}
+.right .customer table tbody tr td:nth-child(3){
+    width: 400px;
+    padding-left: 10px;
+}
+.right .customer table tbody tr td:nth-child(4){
+    width: 160px;
+    text-align: center;
+}
+.right .customer table tbody tr td:nth-child(5){
+    width: 70px;
+    text-align: center;
+}
+.right .customer table tbody tr td span:hover{
+    cursor: pointer;
+}
+
+
+
